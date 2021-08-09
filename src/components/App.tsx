@@ -1,9 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes";
-import { cardListMock } from "../mocks/cardListMock";
 import { Route, Switch } from "react-router-dom";
 
-import CardList from "./commonComponents/CardList";
 import HomePage from "./pages/HomePage";
 import MusicListPage from "./pages/MusicListPage";
 
