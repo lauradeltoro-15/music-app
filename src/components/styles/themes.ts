@@ -6,11 +6,18 @@ export const defaultTheme: Theme = {
     secondary: "#898989",
     primaryBackground: "#fff",
     secondaryBackground: "#fff",
+    ui1: "#000",
+    ui2: "#bbb",
   },
   fontSizes: {
-    sm: "0.8em",
-    md: "1.0em",
-    lg: "1.2em",
+    small: "0.8em",
+    medium: "1.0em",
+    large: "1.2em",
   },
   fontFamily: "'Montserrat', sans-serif",
+  fontWeight: {
+    bold: 800,
+    medium: 400,
+    thin: 200,
+  },
 };
