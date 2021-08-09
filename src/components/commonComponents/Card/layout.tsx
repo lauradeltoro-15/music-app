@@ -7,6 +7,7 @@ export const StyledCard = styled.article<StyledCardProps>`
   flex-direction: column;
   border: ${({ theme: { colors } }) => `1px solid ${colors.ui2}`};
   text-align: center;
+  margin: 20px;
 `;
 
 export const CardTitle = styled.h3`
