@@ -28,7 +28,7 @@ export class SpotifyService implements Service {
     return `Bearer ${authorization.access_token}`;
   }
 
-  async getAuthorization() {
+  private async getAuthorization() {
     try {
       const response = await fetch(
         this.authorizationUrl,
