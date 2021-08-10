@@ -5,6 +5,8 @@ import { CardProps } from "../../commonComponents/Card/models";
 import CardList from "../../commonComponents/CardList";
 import TrackCardDescription from "./TrackCardDescription";
 
+const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
+
 const MusciListPage = () => {
   const [songs, setSongs] = useState<null | CardProps[]>(null);
 
@@ -17,7 +19,7 @@ const MusciListPage = () => {
           artists={track.artists.map(({ name }: any) => name)}
         />
       ),
-      imageUrl: track.href,
+      imageUrl: track.album.images[0]?.url || DEFAULT_IMAGE,
     }));
   };
 
