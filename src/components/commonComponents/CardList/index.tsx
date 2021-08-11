@@ -1,11 +1,11 @@
 import Card from "../Card";
-import { CardProps } from "../Card/models";
+import { CardData } from "../Card/models";
 import { StyledList } from "./layout";
 import { CardListProps } from "./models";
 
-const CardList = ({ items }: CardListProps) => {
-  const cards = items.map((item: CardProps, i: number) => {
-    return <Card key={i} {...item}></Card>;
+const CardList = ({ items, cardStyle }: CardListProps) => {
+  const cards = items.map((item: CardData, i: number) => {
+    return <Card key={i} data={item} style={cardStyle}></Card>;
   });
 
   return <StyledList>{cards}</StyledList>;

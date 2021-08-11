@@ -1,16 +1,14 @@
 import { CardDescription, CardImage, CardTitle, StyledCard } from "./layout";
 import { CardProps } from "./models";
 
-const Card = ({
-  title,
-  children,
-  height = 300,
-  width = 300,
-  imageUrl,
-}: CardProps) => {
+const Card = ({ style, data: { title, children, imageUrl } }: CardProps) => {
   return (
-    <StyledCard width={width} height={height}>
-      <CardImage src={imageUrl} height={height}></CardImage>
+    <StyledCard
+      width={style?.width || 300}
+      height={style?.height || 500}
+      margin={style?.margin || 15}
+    >
+      <CardImage src={imageUrl} height={style?.imageHeight || 300}></CardImage>
       <CardTitle>{title}</CardTitle>
       <CardDescription>{children}</CardDescription>
     </StyledCard>

@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import { StyledCardProps } from "./models";
+import { StyledCardImageProps, StyledCardProps } from "./models";
 
 export const StyledCard = styled.article<StyledCardProps>`
   width: ${({ width }) => `${width}px`};
+  min-height: ${({ height }) => `${height}px`};
   display: flex;
   flex-direction: column;
   border: ${({ theme: { colors } }) => `1px solid ${colors.ui2}`};
   text-align: center;
-  margin: 20px;
+  margin: ${({ margin }) => `${margin}px`};
 `;
 
 export const CardTitle = styled.h3`
@@ -22,7 +23,7 @@ export const CardDescription = styled.div`
   color: ${({ theme: { colors } }) => `1px solid ${colors.ui2}`};
 `;
 
-export const CardImage = styled.img<any>`
+export const CardImage = styled.img<StyledCardImageProps>`
   height: ${({ height }) => `${height}px`};
   object-fit: cover;
 `;
