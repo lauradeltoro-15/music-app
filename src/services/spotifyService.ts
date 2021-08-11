@@ -4,25 +4,28 @@ export class SpotifyService implements Service {
   baseUrl = "https://api.spotify.com/v1";
   authorizationUrl = "https://accounts.spotify.com/api/token";
 
-  async searchByTrackName(name: string) {
+  async searchByTrackName(name: string, limit = 20, offset = 0) {
     const options = {
       headers: {
-        Authorization: await this.getBearerAuthorization(),
+        Authorization: await this.getBearerToken(),
       },
     };
     try {
-      const response = await fetch(this.getSearchBySongUrl(name), options);
+      const response = await fetch(
+        this.getSearchByTrackUrl(name, limit, offset),
+        options
+      );
       return response.json();
     } catch (error) {
       console.log("Error searching by song name:", error);
     }
   }
 
-  private getSearchBySongUrl(name: string) {
-    return `${this.baseUrl}/search?q=${name}&type=track`;
+  private getSearchByTrackUrl(name: string, limit: number, offset: number) {
+    return `${this.baseUrl}/search?q=${name}&type=track&limit=${limit}&offset=${offset}`;
   }
 
-  private async getBearerAuthorization() {
+  private async getBearerToken() {
     const authorization = await this.getAuthorization();
 
     return `Bearer ${authorization.access_token}`;

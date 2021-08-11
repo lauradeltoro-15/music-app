@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
 import { SpotifyService } from "../../../services/spotifyService";
-import { CardProps } from "../../commonComponents/Card/models";
 
-import CardList from "../../commonComponents/CardList";
+import InfiniteScrollCardList from "../../commonComponents/InfiniteScrollCardList";
 import TrackCardDescription from "./TrackCardDescription";
 
 const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
 
-const MusciListPage = () => {
-  const [songs, setSongs] = useState<null | CardProps[]>(null);
+const MusicListPage = () => {
+  const spotifyService = new SpotifyService();
 
-  const mapSongsToCards = (response: any) => {
+  const mapTracksToCardData = (response: any) => {
     return response.tracks.items.map((track: any) => ({
       title: track.name,
       children: (
@@ -23,25 +21,27 @@ const MusciListPage = () => {
     }));
   };
 
-  useEffect(() => {
-    const spotifyService = new SpotifyService();
-
-    const getTrackByName = async () => {
-      const response = await spotifyService.searchByTrackName("life");
-
-      setSongs(mapSongsToCards(response));
-    };
-
-    getTrackByName();
-  }, []);
-
-  return songs ? (
+  const fetchTracks = async (limit: number, offset: number) => {
+    const response = await spotifyService.searchByTrackName(
+      "happy",
+      limit,
+      offset
+    );
+    return mapTracksToCardData(response);
+  };
+  return (
     <main>
-      <CardList items={songs} />
+      <InfiniteScrollCardList
+        fetchItems={fetchTracks}
+        cardStyle={{
+          height: 500,
+          width: 300,
+          imageHeight: 300,
+          margin: 15,
+        }}
+      />
     </main>
-  ) : (
-    <p>loading...</p>
   );
 };
 
-export default MusciListPage;
+export default MusicListPage;

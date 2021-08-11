@@ -1,5 +1,6 @@
-import { CardProps } from "../Card/models";
+import { CardData, CardStyle } from "../Card/models";
 
-export interface CardListProps {
-  items: CardProps[];
-}
+export type CardListProps = {
+  items: CardData[];
+  cardStyle: CardStyle;
+};
