@@ -1,4 +1,4 @@
-import Service from "../models/Service";
+import { Service } from "../models/Service";
 
 export class SpotifyService implements Service {
   baseUrl = "https://api.spotify.com/v1";
@@ -42,7 +42,7 @@ export class SpotifyService implements Service {
       console.log("Error getting access token: ", error);
     }
   }
-    
+
   private getAuthorizationRequestOptions() {
     const body = new URLSearchParams();
     body.append("grant_type", "client_credentials");
