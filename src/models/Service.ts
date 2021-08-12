@@ -1,6 +1,5 @@
-interface Service {
+export interface Service {
   baseUrl: string;
 
 }
 
-export default Service;

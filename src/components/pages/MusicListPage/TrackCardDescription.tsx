@@ -1,7 +1,5 @@
-interface TrackCardDescriptionProps {
-  artists: string[];
-  album: string;
-}
+import { TrackCardDescriptionProps } from "./models";
+
 const TrackCardDescription = ({
   artists,
   album,

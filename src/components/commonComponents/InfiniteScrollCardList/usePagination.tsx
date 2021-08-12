@@ -1,11 +1,5 @@
 import { useState } from "react";
-
-type Page = {
-  isLoading: boolean;
-  items: any[];
-};
-
-type FetchCallback = (pageLimit: number, offset: number) => Promise<any>;
+import { FetchCallback, Page } from "./models";
 
 const usePagination = (fetchCallback: FetchCallback, pageLimit: number) => {
   const [page, setPage] = useState<Page>({

@@ -1,14 +1,10 @@
 import { useEffect } from "react";
 import CardList from "../CardList";
-import { CardData, CardStyle } from "../Card/models";
 import usePagination from "./usePagination";
+import { InfiniteScrollCardListProps } from "./models";
 
 const OFFSET_FOR_BROWSER_COMPATIBILITY = 5;
 
-type InfiniteScrollCardListProps = {
-  fetchItems: (limit: number, offset: number) => Promise<CardData[]>;
-  cardStyle: CardStyle;
-};
 
 const InfiniteScrollCardList = ({
   fetchItems,
