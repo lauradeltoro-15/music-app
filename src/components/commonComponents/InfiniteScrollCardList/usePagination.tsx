@@ -9,13 +9,18 @@ const usePagination = (fetchCallback: FetchCallback, pageLimit: number) => {
 
   const getNextPage = async () => {
     setPage({ ...page, isLoading: true });
+  
+    try {
+      const newItems = await fetchCallback(pageLimit, page.items.length);
 
-    const newItems = await fetchCallback(pageLimit, page.items.length);
-
-    setPage({
-      isLoading: false,
-      items: [...page.items, ...newItems],
-    });
+      setPage({
+        isLoading: false,
+        items: [...page.items, ...newItems],
+      });
+    } catch (error) {
+      console.log("Error getting next page: ", error);
+      setPage({ ...page, isLoading: false });
+    }
   };
 
   return {
