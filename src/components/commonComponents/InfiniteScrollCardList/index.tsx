@@ -5,7 +5,6 @@ import { InfiniteScrollCardListProps } from "./models";
 
 const OFFSET_FOR_BROWSER_COMPATIBILITY = 5;
 
-
 const InfiniteScrollCardList = ({
   fetchItems,
   cardStyle,
