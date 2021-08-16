@@ -1,23 +1,26 @@
 import { Service } from "../models/Service";
+import { SpotifyErrorHandler } from "./errorHandler";
 
 export class SpotifyService implements Service {
   baseUrl = "https://api.spotify.com/v1";
   authorizationUrl = "https://accounts.spotify.com/api/token";
+  errorHandler = new SpotifyErrorHandler();
 
   async searchByTrackName(name: string, limit = 20, offset = 0) {
-    const options = {
-      headers: {
-        Authorization: await this.getBearerToken(),
-      },
-    };
     try {
+      const options = {
+        headers: {
+          Authorization: await this.getBearerToken(),
+        },
+      };
       const response = await fetch(
         this.getSearchByTrackUrl(name, limit, offset),
         options
       );
-      return response.json();
+
+      return this.validatedResponse(await response.json());
     } catch (error) {
-      console.log("Error searching by song name:", error);
+      this.errorHandler.handle(error);
     }
   }
 
@@ -32,15 +35,11 @@ export class SpotifyService implements Service {
   }
 
   private async getAuthorization() {
-    try {
-      const response = await fetch(
-        this.authorizationUrl,
-        this.getAuthorizationRequestOptions()
-      );
-      return response.json();
-    } catch (error) {
-      console.log("Error getting access token: ", error);
-    }
+    const response = await fetch(
+      this.authorizationUrl,
+      this.getAuthorizationRequestOptions()
+    );
+    return this.validatedResponse(await response.json());
   }
 
   private getAuthorizationRequestOptions() {
@@ -61,5 +60,11 @@ export class SpotifyService implements Service {
       },
       body,
     };
+  }
+
+  private validatedResponse(response: any) {
+    if (response.error) throw response.error;
+
+    return response;
   }
 }
