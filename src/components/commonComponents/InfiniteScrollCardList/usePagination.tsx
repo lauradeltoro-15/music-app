@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { Context, useContext, useState } from "react";
+import { ModalContext } from "../../contexts/ModalContext";
+import { ModalAttributes } from "../../contexts/ModalContext/models";
+import ErrorMessager from "../ErrorMessager";
 import { FetchCallback, Page } from "./models";
 
 const usePagination = (fetchCallback: FetchCallback, pageLimit: number) => {
@@ -6,6 +9,7 @@ const usePagination = (fetchCallback: FetchCallback, pageLimit: number) => {
     isLoading: false,
     items: [],
   });
+  const { handleModal } = useContext(ModalContext as Context<ModalAttributes>);
 
   const getNextPage = async () => {
     setPage({ ...page, isLoading: true });
@@ -18,7 +22,7 @@ const usePagination = (fetchCallback: FetchCallback, pageLimit: number) => {
         items: [...page.items, ...newItems],
       });
     } catch (error) {
-      console.log("Error getting next page: ", error);
+      handleModal(true, <ErrorMessager error={error} />);
       setPage({ ...page, isLoading: false });
     }
   };

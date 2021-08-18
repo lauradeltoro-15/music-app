@@ -1,4 +1,4 @@
-import { SpotifyService } from "../../../services/spotifyService";
+import { SpotifyService } from "../../../services/spotify";
 
 import InfiniteScrollCardList from "../../commonComponents/InfiniteScrollCardList";
 import {
