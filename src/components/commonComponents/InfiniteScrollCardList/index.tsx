@@ -47,7 +47,7 @@ const InfiniteScrollCardList = ({
     };
   }, [isLoading]);
 
-  return <CardList items={items} cardStyle={cardStyle} />;
+  return <CardList items={items} cardStyle={cardStyle} isLoading={isLoading} />;
 };
 
 export default InfiniteScrollCardList;

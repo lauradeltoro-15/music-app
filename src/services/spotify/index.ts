@@ -1,4 +1,4 @@
-import { Service } from "../models/Service";
+import { Service } from "../../models/Service";
 import { SpotifyErrorHandler } from "./errorHandler";
 
 export class SpotifyService implements Service {
