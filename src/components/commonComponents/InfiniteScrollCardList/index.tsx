@@ -17,14 +17,14 @@ const InfiniteScrollCardList = ({
     return cardsPerRow * cardsPerColumn;
   };
 
-  const { isLoading, items, getNextPage } = usePagination(
+  const { isLoading, items, addNextPage, getFirstPage } = usePagination(
     fetchItems,
     getPageLimit()
   );
 
   useEffect(() => {
-    getNextPage();
-  }, []);
+    getFirstPage();
+  }, [fetchItems]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -37,7 +37,7 @@ const InfiniteScrollCardList = ({
         document.body.offsetHeight;
 
       if (isPageEnd) {
-        getNextPage();
+        addNextPage();
       }
     };
 
