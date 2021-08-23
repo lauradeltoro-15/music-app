@@ -5,9 +5,9 @@ export type InfiniteScrollCardListProps = {
   cardStyle: CardStyle;
 };
 
-export type Page = {
+export type Page<T> = {
   isLoading: boolean;
-  items: any[];
+  items: T[];
 };
 
-export type FetchCallback = (pageLimit: number, offset: number) => Promise<any>;
+export type FetchCallback<T> = (pageLimit: number, offset: number) => Promise<T[]>;
