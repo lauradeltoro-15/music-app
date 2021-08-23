@@ -1,6 +1,8 @@
+import { useState, useCallback } from "react";
 import { SpotifyService } from "../../../services/spotify";
-
 import InfiniteScrollCardList from "../../commonComponents/InfiniteScrollCardList";
+import SearchBar from "../../commonComponents/SearchBar";
+
 import {
   SpotifyArtist,
   SpotifySearchByTrackResponse,
@@ -12,6 +14,7 @@ const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
 
 const MusicListPage = () => {
   const spotifyService = new SpotifyService();
+  const [trackName, setTrackName] = useState("");
 
   const mapTracksToCardData = (response: SpotifySearchByTrackResponse) => {
     return response.tracks.items.map((track: SpotifyTrack) => ({
@@ -26,26 +29,32 @@ const MusicListPage = () => {
     }));
   };
 
-  const fetchTracks = async (limit: number, offset: number) => {
-    const response = await spotifyService.searchByTrackName(
-      "happy",
-      limit,
-      offset
-    );
-    return mapTracksToCardData(response);
-  };
+  const fetchTracks = useCallback(
+    async (limit: number, offset: number) => {
+      const response = await spotifyService.searchByTrackName(
+        trackName,
+        limit,
+        offset
+      );
+      return mapTracksToCardData(response);
+    },
+    [trackName]
+  );
 
   return (
     <main>
-      <InfiniteScrollCardList
-        fetchItems={fetchTracks}
-        cardStyle={{
-          height: 500,
-          width: 300,
-          imageHeight: 300,
-          margin: 15,
-        }}
-      />
+      <SearchBar onChange={setTrackName} />
+      {trackName.length ? (
+        <InfiniteScrollCardList
+          fetchItems={fetchTracks}
+          cardStyle={{
+            height: 500,
+            width: 300,
+            imageHeight: 300,
+            margin: 15,
+          }}
+        />
+      ) : null}
     </main>
   );
 };
