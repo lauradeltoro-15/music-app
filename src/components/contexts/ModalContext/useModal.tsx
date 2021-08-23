@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-export default () => {
+const useModal = () => {
   const [isVisible, setVisible] = React.useState(false);
   const [content, setModalContent] = React.useState<ReactNode>(null);
 
@@ -11,3 +11,5 @@ export default () => {
 
   return { handleModal, isVisible, content };
 };
+
+export default useModal;

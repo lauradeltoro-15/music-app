@@ -4,8 +4,8 @@ import { ModalAttributes } from "../../contexts/ModalContext/models";
 import ErrorMessager from "../ErrorMessager";
 import { FetchCallback, Page } from "./models";
 
-const usePagination = (fetchCallback: FetchCallback, pageLimit: number) => {
-  const [page, setPage] = useState<Page>({
+const  usePagination = <T, > (fetchCallback: FetchCallback<T>, pageLimit: number) => {
+  const [page, setPage] = useState<Page<T>>({
     isLoading: false,
     items: [],
   });

@@ -1,3 +1,3 @@
-export interface ErrorHandler {
-  handle: (error: any) => void;
+export interface ErrorHandler<T> {
+  handle:(error: T) => void;
 }

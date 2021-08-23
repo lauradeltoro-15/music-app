@@ -1,7 +1,8 @@
 import { Service } from "../../models/Service";
 import { SpotifyErrorHandler } from "./errorHandler";
+import { SpotifyError } from "./models";
 
-export class SpotifyService implements Service {
+export class SpotifyService implements Service<SpotifyError> {
   baseUrl = "https://api.spotify.com/v1";
   authorizationUrl = "https://accounts.spotify.com/api/token";
   errorHandler = new SpotifyErrorHandler();
