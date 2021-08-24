@@ -20,4 +20,10 @@ export const defaultTheme: Theme = {
     medium: 400,
     thin: 200,
   },
+  distances: {
+    small: "0.8em",
+    medium: "1.0em",
+    large: "1.2em",
+    extraLarge: "2em",
+  },
 };

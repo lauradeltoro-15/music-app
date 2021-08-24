@@ -17,4 +17,7 @@ export interface Theme {
     medium: number;
     thin: number;
   };
+  distances: {
+    [index: string]: string;
+  };
 }
