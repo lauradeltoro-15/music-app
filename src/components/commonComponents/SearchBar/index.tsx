@@ -1,16 +1,24 @@
+import { useEffect, useState } from "react";
+import useDebounce from "./useDebounce";
+import { StyledSearchBar, StyledSearchBarContainer } from "./layout";
+
 const SearchBar = ({ onChange }: any) => {
-  
-  const handleChange = (e: any) => {
-    onChange(e.target.value);
-  };
-  
+  const [searchValue, setSearchValue] = useState("");
+  const debouncedSearchValue = useDebounce(searchValue);
+
+  useEffect(() => {
+    onChange(debouncedSearchValue);
+  }, [debouncedSearchValue]);
+
   return (
-    <input
-      type="text"
-      className="input"
-      onChange={handleChange}
-      placeholder="Search..."
-    />
+    <StyledSearchBarContainer>
+      <StyledSearchBar
+        type="text"
+        onChange={(e) => setSearchValue(e.target.value)}
+        placeholder="Search..."
+        value={searchValue}
+      />
+    </StyledSearchBarContainer>
   );
 };
 

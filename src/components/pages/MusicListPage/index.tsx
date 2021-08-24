@@ -14,7 +14,7 @@ const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
 
 const MusicListPage = () => {
   const spotifyService = new SpotifyService();
-  const [trackName, setTrackName] = useState("");
+  const [trackSearchQuery, setTrackSearchQuery] = useState("");
 
   const mapTracksToCardData = (response: SpotifySearchByTrackResponse) => {
     return response.tracks.items.map((track: SpotifyTrack) => ({
@@ -32,19 +32,19 @@ const MusicListPage = () => {
   const fetchTracks = useCallback(
     async (limit: number, offset: number) => {
       const response = await spotifyService.searchByTrackName(
-        trackName,
+        trackSearchQuery,
         limit,
         offset
       );
       return mapTracksToCardData(response);
     },
-    [trackName]
+    [trackSearchQuery]
   );
 
   return (
     <main>
-      <SearchBar onChange={setTrackName} />
-      {trackName.length ? (
+      <SearchBar onChange={setTrackSearchQuery} />
+      {trackSearchQuery.length ? (
         <InfiniteScrollCardList
           fetchItems={fetchTracks}
           cardStyle={{
