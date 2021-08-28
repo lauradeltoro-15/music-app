@@ -65,3 +65,9 @@ export type TrackCardDescriptionProps = {
   artists: string[];
   album: string;
 };
+
+export enum TrackSearchErrorMessage {
+  IsNotEmpty = "The track cannot be empty!",
+  Match = "There are some weird characters in your song, only numbers and letters are allowed",
+  Custom = "Ouch, we don't like sad songs here :(",
+}

@@ -2,13 +2,13 @@ import { useState, useCallback } from "react";
 import { SpotifyService } from "../../../services/spotify";
 import InfiniteScrollCardList from "../../commonComponents/InfiniteScrollCardList";
 import SearchBar from "../../commonComponents/SearchBar";
-
 import {
   SpotifyArtist,
   SpotifySearchByTrackResponse,
   SpotifyTrack,
 } from "./models";
 import TrackCardDescription from "./TrackCardDescription";
+import { trackValidators } from "./trackValidators";
 
 const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
 
@@ -43,7 +43,7 @@ const MusicListPage = () => {
 
   return (
     <main>
-      <SearchBar onChange={setTrackSearchQuery} />
+      <SearchBar onChange={setTrackSearchQuery} validators={trackValidators} />
       {trackSearchQuery.length ? (
         <InfiniteScrollCardList
           fetchItems={fetchTracks}
