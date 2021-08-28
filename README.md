@@ -1,6 +1,6 @@
 # Music APP
 
-<img src="https://unsplash.com/photos/9DZY0mO98xU/800x600"  alt="Work in Progress"/>
+<img src="https://source.unsplash.com/9DZY0mO98xU/800x600"  alt="Work in Progress"/>
 
 ## Table of Contents
 
@@ -34,4 +34,4 @@ REACT_APP_SPOTIFY_CLIENT_SECRET = {your_client_secret}
 
 3. Install dependencies `npm i`.
 
-4. Launch the application with `npm  start`
+4. Launch the application with `npm start`
