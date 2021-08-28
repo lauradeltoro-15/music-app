@@ -8,6 +8,7 @@ export const defaultTheme: Theme = {
     secondaryBackground: "#fff",
     ui1: "#000",
     ui2: "#bbb",
+    error: "#AF0406",
   },
   fontSizes: {
     small: "0.8em",
