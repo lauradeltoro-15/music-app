@@ -13,3 +13,8 @@ export const cardData = {
   children: <TestDescription />,
   imageUrl: testUrl,
 };
+
+export const error: Error = {
+  name: "Test error",
+  message: "Test error message",
+};
