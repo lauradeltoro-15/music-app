@@ -27,6 +27,12 @@ export const HookWithModalContext = <T,>(hook: () => T) => {
   });
   return current;
 };
+export const Hook = <T,>(hook: () => T) => {
+  const {
+    result: { current },
+  } = renderHook(hook);
+  return current;
+};
 
 export const mockUseState = <T,>(state: T) => {
   const mockUseState = jest.spyOn(React, "useState");
