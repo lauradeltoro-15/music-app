@@ -28,7 +28,7 @@ const usePagination = <T,>(
         items: getAllItems(newItems),
       });
     } catch (error) {
-      handleModal(true, <ErrorMessager error={error} />);
+      handleModal(true, <ErrorMessager error={error as Error} />);
       setPage({ ...page, isLoading: false });
     }
   };
