@@ -27,11 +27,12 @@ export const HookWithModalContext = <T,>(hook: () => T) => {
   });
   return current;
 };
+
 export const Hook = <T,>(hook: () => T) => {
   const {
-    result: { current },
+    result: { current }, unmount,
   } = renderHook(hook);
-  return current;
+  return {current, unmount};
 };
 
 export const mockUseState = <T,>(state: T) => {
