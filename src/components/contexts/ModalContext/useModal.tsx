@@ -4,7 +4,7 @@ const useModal = () => {
   const [isVisible, setVisible] = useState(false);
   const [content, setModalContent] = useState<ReactNode>(null);
 
-  const handleModal = (visible: boolean, content: ReactNode = null) => {
+  const handleModal = (visible: boolean, content: ReactNode) => {
     setVisible(visible);
     setModalContent(content);
   };
