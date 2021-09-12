@@ -1,4 +1,4 @@
-import { Hook, HookWithModalContext, mockUseState } from "./testHelpers";
+import { Hook, mockUseState } from "./testHelpers";
 import useValidation from "../commonComponents/SearchBar/useValidation";
 import { IsNotEmptyValidator } from "../commonComponents/SearchBar/useValidation/validators";
 import { ValidatorType } from "../commonComponents/SearchBar/useValidation/models";

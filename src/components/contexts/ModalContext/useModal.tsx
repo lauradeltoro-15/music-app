@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 const useModal = () => {
-  const [isVisible, setVisible] = React.useState(false);
-  const [content, setModalContent] = React.useState<ReactNode>(null);
+  const [isVisible, setVisible] = useState(false);
+  const [content, setModalContent] = useState<ReactNode>(null);
 
   const handleModal = (visible: boolean, content: ReactNode = null) => {
     setVisible(visible);
