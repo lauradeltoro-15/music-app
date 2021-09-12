@@ -2,7 +2,6 @@ import Searchbar from "..";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { WithTheme } from "../../../../tests/helpers";
 import { IsNotEmptyValidator } from "../useValidation/validators";
-import useDebounce from "../useDebounce";
 import useValidation from "../useValidation";
 import { Validator, ValidatorType } from "../useValidation/models";
 
@@ -29,24 +28,23 @@ jest.mock("../useValidation", () => {
 });
 
 describe("Searchbar Component", () => {
-
   it("should display an empty searchbar", () => {
     render(
       WithTheme(<Searchbar validators={validators} onChange={onChange} />)
     );
 
-    const textbox = screen.getByRole("textbox");
-    expect(textbox).toBeInTheDocument();
-    expect(textbox).toHaveValue("");
+    const searchbar = screen.getByRole("textbox");
+    expect(searchbar).toBeInTheDocument();
+    expect(searchbar).toHaveValue("");
   });
 
   it("should call onchange when no errors", () => {
     render(
       WithTheme(<Searchbar validators={validators} onChange={onChange} />)
     );
-    const textbox = screen.getByRole("textbox");
+    const searchbar = screen.getByRole("textbox");
 
-    fireEvent.change(textbox, { target: { value: validValue } });
+    fireEvent.change(searchbar, { target: { value: validValue } });
 
     expect(onChange).toHaveBeenCalledWith(validValue);
   });

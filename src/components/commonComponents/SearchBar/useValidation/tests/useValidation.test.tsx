@@ -11,7 +11,6 @@ const noValue = undefined;
 const validValue = "Example valid value";
 
 describe("useValidation hook", () => {
-  afterEach(() => jest.resetAllMocks());
 
   it("should not check validation if there is no value provided", () => {
     const mockSetState = mockUseState([]);
