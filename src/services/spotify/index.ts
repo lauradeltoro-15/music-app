@@ -1,6 +1,6 @@
 import { Service } from "../../models/Service";
 import { SpotifyErrorHandler } from "./errorHandler";
-import { SpotifyError } from "./models";
+import { SpotifyResponse, SpotifyError } from "./models";
 
 export class SpotifyService implements Service<SpotifyError> {
   baseUrl = "https://api.spotify.com/v1";
@@ -64,7 +64,7 @@ export class SpotifyService implements Service<SpotifyError> {
     };
   }
 
-  private validatedResponse(response: any) {
+  private validatedResponse(response: SpotifyResponse) {
     if (response.error) throw response.error;
 
     return response;

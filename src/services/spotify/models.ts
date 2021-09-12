@@ -11,3 +11,8 @@ export enum SpotifyAuthenticationError {
 }
 
 export type SpotifyError = SpotifyAuthenticationError | SpotifyRegularError;
+
+export type SpotifyResponse = {
+  [index: string]: any;
+  error?: SpotifyError;
+};
