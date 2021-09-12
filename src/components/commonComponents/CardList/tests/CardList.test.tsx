@@ -1,7 +1,6 @@
 import CardList from "..";
 import { render, screen } from "@testing-library/react";
 import { WithTheme } from "../../../../tests/helpers";
-import "@testing-library/jest-dom/extend-expect";
 import { CardListProps } from "../models";
 import { cardStyle, cardData } from "../../../../tests/sampleData";
 

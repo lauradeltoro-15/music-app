@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom/extend-expect";
 import InfiniteScrollCardList from "..";
 import { fireEvent, render, RenderResult } from "@testing-library/react";
 import { WithTheme } from "../../../../tests/helpers";
@@ -24,7 +23,7 @@ const mockLoadingUsePagination = {
 jest.mock("../usePagination.tsx", () => {
   return {
     __esModule: true,
-    default: jest.fn(),
+    default: jest.fn(() => mockUsePagination),
   };
 });
 
@@ -59,8 +58,6 @@ describe("InfiniteScrollCardList Component", () => {
   let renderedComponent: RenderResult;
 
   beforeEach(() => {
-    (usePagination as jest.Mock).mockReturnValue(mockUsePagination);
-
     renderedComponent = render(
       WithTheme(
         <InfiniteScrollCardList
@@ -94,9 +91,6 @@ describe("InfiniteScrollCardList Component", () => {
 
 describe("InfiniteScrollCardList Component, scrolling", () => {
   const originalWindowInnerHeight = window.innerHeight;
-  beforeEach(() => {
-    (usePagination as jest.Mock).mockReturnValue(mockUsePagination);
-  });
 
   afterAll(() => {
     resetWindowState(originalWindowInnerHeight);

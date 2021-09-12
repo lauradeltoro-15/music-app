@@ -1,11 +1,10 @@
 import Searchbar from "..";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { WithTheme } from "../../../../tests/helpers";
-import "@testing-library/jest-dom/extend-expect";
 import { IsNotEmptyValidator } from "../useValidation/validators";
 import useDebounce from "../useDebounce";
 import useValidation from "../useValidation";
-import { ValidatorType } from "../useValidation/models";
+import { Validator, ValidatorType } from "../useValidation/models";
 
 const onChange = jest.fn();
 const message = "Example message";
@@ -19,22 +18,18 @@ const error = {
 jest.mock("../useDebounce.tsx", () => {
   return {
     __esModule: true,
-    default: jest.fn(),
+    default: jest.fn((value: string) => value),
   };
 });
 jest.mock("../useValidation", () => {
   return {
     __esModule: true,
-    default: jest.fn(),
+    default: jest.fn((_validators: Validator[], _value?: string) => []),
   };
 });
 
 describe("Searchbar Component", () => {
-  beforeEach(() => {
-    (useDebounce as jest.Mock).mockImplementation((value) => value);
-    (useValidation as jest.Mock).mockReturnValue([]);
-  });
-  afterEach(() => {});
+
   it("should display an empty searchbar", () => {
     render(
       WithTheme(<Searchbar validators={validators} onChange={onChange} />)

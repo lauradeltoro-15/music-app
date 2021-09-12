@@ -1,6 +1,5 @@
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "../components/styles/themes";
-import "@testing-library/jest-dom/extend-expect";
 import { ModalProvider } from "../components/contexts/ModalContext";
 import { renderHook } from "@testing-library/react-hooks";
 import React from "react";
@@ -30,9 +29,10 @@ export const HookWithModalContext = <T,>(hook: () => T) => {
 
 export const Hook = <T,>(hook: () => T) => {
   const {
-    result: { current }, unmount,
+    result: { current },
+    unmount,
   } = renderHook(hook);
-  return {current, unmount};
+  return { current, unmount };
 };
 
 export const mockUseState = <T,>(state: T) => {

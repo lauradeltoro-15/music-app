@@ -5,16 +5,13 @@ import usePagination from "../usePagination";
 import ErrorMessager from "../../ErrorMessager";
 
 const error = new Error("Error example");
-const mockFetchCallback = jest.fn();
+const mockFetchCallback = jest.fn(() => Promise.resolve([item]));
 const mockFetchCallbackRejected = (_pageLimit: number, _offset: number) =>
   Promise.reject(error);
 const pageLimit = 1;
 const item = "exampleItem";
 
 describe("usePagination hook", () => {
-  beforeEach(() => {
-    mockFetchCallback.mockReturnValue(Promise.resolve([item]));
-  });
 
   afterEach(() => jest.restoreAllMocks());
 
