@@ -1,7 +1,5 @@
-import { Hook, mockUseState } from "./testHelpers";
-import useDebounce, {
-  DEFAULT_DELAY,
-} from "../commonComponents/SearchBar/useDebounce";
+import { Hook, mockUseState } from "../../../../tests/helpers";
+import useDebounce, { DEFAULT_DELAY } from "../useDebounce";
 
 const value = "Example value";
 const delay = 300;

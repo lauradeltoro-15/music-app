@@ -1,8 +1,8 @@
 import React from "react";
-import { HookWithModalContext, mockUseState } from "./testHelpers";
+import { HookWithModalContext, mockUseState } from "../../../../tests/helpers";
 import { act } from "react-dom/test-utils";
-import usePagination from "../commonComponents/InfiniteScrollCardList/usePagination";
-import ErrorMessager from "../commonComponents/ErrorMessager";
+import usePagination from "../usePagination";
+import ErrorMessager from "../../ErrorMessager";
 
 const error = new Error("Error example");
 const mockFetchCallback = jest.fn();

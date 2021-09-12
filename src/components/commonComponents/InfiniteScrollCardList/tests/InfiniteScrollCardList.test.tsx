@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom/extend-expect";
-import InfiniteScrollCardList from "../commonComponents/InfiniteScrollCardList";
+import InfiniteScrollCardList from "..";
 import { fireEvent, render, RenderResult } from "@testing-library/react";
-import { WithTheme } from "./testHelpers";
-import { cardData, cardStyle } from "./testSampleData";
-import usePagination from "../commonComponents/InfiniteScrollCardList/usePagination";
+import { WithTheme } from "../../../../tests/helpers";
+import { cardData, cardStyle } from "../../../../tests/sampleData";
+import usePagination from "../usePagination";
 
 const mockFetchItems = jest.fn((_limit: number, _offset: number) =>
   Promise.resolve([cardData])
@@ -21,15 +21,12 @@ const mockLoadingUsePagination = {
   isLoading: true,
 };
 
-jest.mock(
-  "../commonComponents/InfiniteScrollCardList/usePagination.tsx",
-  () => {
-    return {
-      __esModule: true,
-      default: jest.fn(),
-    };
-  }
-);
+jest.mock("../usePagination.tsx", () => {
+  return {
+    __esModule: true,
+    default: jest.fn(),
+  };
+});
 
 const setWindowScrollingState = (isPageEnd: boolean) => {
   const scrollY = isPageEnd ? 150 : 50;

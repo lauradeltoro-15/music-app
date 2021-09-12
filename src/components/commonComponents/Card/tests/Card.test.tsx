@@ -1,10 +1,10 @@
-import Card from "../commonComponents/Card/index";
+import Card from "../index";
 import { render, screen } from "@testing-library/react";
-import { CardProps } from "../commonComponents/Card/models";
-import { WithTheme } from "./testHelpers";
+import { CardProps } from "../models";
+import { WithTheme } from "../../../../tests/helpers";
 import "@testing-library/jest-dom/extend-expect";
-import { defaultStyle } from "../commonComponents/Card/index";
-import { cardData, cardStyle, testUrl } from "./testSampleData";
+import { defaultStyle } from "../index";
+import { cardData, cardStyle, testUrl } from "../../../../tests/sampleData";
 
 const cardPropsWithStyles: CardProps = {
   data: cardData,

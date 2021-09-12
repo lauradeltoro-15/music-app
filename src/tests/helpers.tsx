@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
-import { defaultTheme } from "../styles/themes";
+import { defaultTheme } from "../components/styles/themes";
 import "@testing-library/jest-dom/extend-expect";
-import { ModalProvider } from "../contexts/ModalContext";
+import { ModalProvider } from "../components/contexts/ModalContext";
 import { renderHook } from "@testing-library/react-hooks";
 import React from "react";
 

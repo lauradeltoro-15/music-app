@@ -1,7 +1,7 @@
-import { Hook, mockUseState } from "./testHelpers";
-import useValidation from "../commonComponents/SearchBar/useValidation";
-import { IsNotEmptyValidator } from "../commonComponents/SearchBar/useValidation/validators";
-import { ValidatorType } from "../commonComponents/SearchBar/useValidation/models";
+import { Hook, mockUseState } from "../../../../../tests/helpers";
+import useValidation from "..";
+import { IsNotEmptyValidator } from "../validators";
+import { ValidatorType } from "../models";
 
 const message = "Example message";
 const validators = [new IsNotEmptyValidator(message)];
