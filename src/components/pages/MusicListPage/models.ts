@@ -12,7 +12,7 @@ export type SpotifySearchByTrackResponse = {
 
 export type SpotifyTrack = {
   album: {
-    album_type: number;
+    album_type: string;
     artists: SpotifyArtist[];
     available_markets: string[];
     external_urls: {
