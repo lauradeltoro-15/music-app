@@ -1,5 +1,5 @@
-import { Hook, mockUseState } from "./testHelpers";
-import useModal from "../contexts/ModalContext/useModal";
+import { Hook, mockUseState } from "../../../../tests/helpers";
+import useModal from "../useModal";
 import { act } from "@testing-library/react";
 
 const visible = true;

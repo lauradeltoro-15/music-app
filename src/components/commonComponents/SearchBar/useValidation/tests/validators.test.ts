@@ -1,5 +1,5 @@
-import { ValidatorType } from "../commonComponents/SearchBar/useValidation/models";
-import * as validators from "../commonComponents/SearchBar/useValidation/validators";
+import { ValidatorType } from "../models";
+import * as validators from "../validators";
 
 const errorMessage = "Example error message";
 

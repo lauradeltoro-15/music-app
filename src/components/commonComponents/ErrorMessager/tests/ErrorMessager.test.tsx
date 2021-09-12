@@ -1,10 +1,10 @@
 import ErrorMessager, {
   errorMessageTitle,
-} from "../commonComponents/ErrorMessager";
+} from "..";
 import { render, screen } from "@testing-library/react";
-import { WithTheme } from "./testHelpers";
+import { WithTheme } from "../../../../tests/helpers";
 import "@testing-library/jest-dom/extend-expect";
-import { error } from "./testSampleData";
+import { error } from "../../../../tests/sampleData";
 
 describe("ErrorMessager Component", () => {
   beforeEach(() => {

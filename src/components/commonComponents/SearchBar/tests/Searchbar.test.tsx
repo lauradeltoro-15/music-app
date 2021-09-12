@@ -1,11 +1,11 @@
-import Searchbar from "../commonComponents/SearchBar";
+import Searchbar from "..";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { WithTheme } from "./testHelpers";
+import { WithTheme } from "../../../../tests/helpers";
 import "@testing-library/jest-dom/extend-expect";
-import { IsNotEmptyValidator } from "../commonComponents/SearchBar/useValidation/validators";
-import useDebounce from "../commonComponents/SearchBar/useDebounce";
-import useValidation from "../commonComponents/SearchBar/useValidation";
-import { ValidatorType } from "../commonComponents/SearchBar/useValidation/models";
+import { IsNotEmptyValidator } from "../useValidation/validators";
+import useDebounce from "../useDebounce";
+import useValidation from "../useValidation";
+import { ValidatorType } from "../useValidation/models";
 
 const onChange = jest.fn();
 const message = "Example message";
@@ -16,13 +16,13 @@ const error = {
   type: ValidatorType.IsNotEmpty,
 };
 
-jest.mock("../commonComponents/SearchBar/useDebounce.tsx", () => {
+jest.mock("../useDebounce.tsx", () => {
   return {
     __esModule: true,
     default: jest.fn(),
   };
 });
-jest.mock("../commonComponents/SearchBar/useValidation", () => {
+jest.mock("../useValidation", () => {
   return {
     __esModule: true,
     default: jest.fn(),

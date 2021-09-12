@@ -1,9 +1,9 @@
-import CardList from "../commonComponents/CardList";
+import CardList from "..";
 import { render, screen } from "@testing-library/react";
-import { WithTheme } from "./testHelpers";
+import { WithTheme } from "../../../../tests/helpers";
 import "@testing-library/jest-dom/extend-expect";
-import { CardListProps } from "../commonComponents/CardList/models";
-import { cardStyle, cardData } from "./testSampleData";
+import { CardListProps } from "../models";
+import { cardStyle, cardData } from "../../../../tests/sampleData";
 
 const loadingEmptyCardList: CardListProps = {
   isLoading: true,

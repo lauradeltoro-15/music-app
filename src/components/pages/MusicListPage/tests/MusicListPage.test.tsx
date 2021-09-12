@@ -1,11 +1,11 @@
-import MusicListPage, { DEFAULT_IMAGE } from "../pages/MusicListPage";
+import MusicListPage, { DEFAULT_IMAGE } from "..";
 import { render, screen, within } from "@testing-library/react";
-import { WithModalContext, WithTheme } from "./testHelpers";
+import { WithModalContext, WithTheme } from "../../../../tests/helpers";
 import "@testing-library/jest-dom/extend-expect";
-import { SpotifyService } from "../../services/spotify";
-import { spotifyTrack } from "./testSampleData";
+import { SpotifyService } from "../../../../services/spotify";
+import { spotifyTrack } from "../../../../tests/sampleData";
 
-jest.mock("../../services/spotify");
+jest.mock("../../../../services/spotify");
 const mockSearchByTrackName = jest.fn();
 
 const spotifyTrackWithNoImage = {

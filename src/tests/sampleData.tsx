@@ -1,4 +1,4 @@
-import { SpotifyTrack } from "../pages/MusicListPage/models";
+import { SpotifyTrack } from "../components/pages/MusicListPage/models";
 
 export const testUrl = "https://www.example.com";
 export const TestDescription = () => <p>Card Descrition Example</p>;
