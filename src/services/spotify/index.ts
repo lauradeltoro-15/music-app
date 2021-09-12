@@ -9,6 +9,7 @@ export class SpotifyService implements Service<SpotifyError> {
 
   async searchByTrackName(name: string, limit = 20, offset = 0) {
     try {
+      if (!name) return Promise.resolve({ tracks: { items: [] } });
       const options = {
         headers: {
           Authorization: await this.getBearerToken(),

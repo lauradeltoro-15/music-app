@@ -10,7 +10,7 @@ import {
 import TrackCardDescription from "./TrackCardDescription";
 import { trackValidators } from "./trackValidators";
 
-const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
+export const DEFAULT_IMAGE = "https://source.unsplash.com/FZWivbri0Xk/400x400";
 
 const MusicListPage = () => {
   const spotifyService = new SpotifyService();
@@ -44,17 +44,15 @@ const MusicListPage = () => {
   return (
     <main>
       <SearchBar onChange={setTrackSearchQuery} validators={trackValidators} />
-      {trackSearchQuery.length ? (
-        <InfiniteScrollCardList
-          fetchItems={fetchTracks}
-          cardStyle={{
-            height: 500,
-            width: 300,
-            imageHeight: 300,
-            margin: 15,
-          }}
-        />
-      ) : null}
+      <InfiniteScrollCardList
+        fetchItems={fetchTracks}
+        cardStyle={{
+          height: 500,
+          width: 300,
+          imageHeight: 300,
+          margin: 15,
+        }}
+      />
     </main>
   );
 };

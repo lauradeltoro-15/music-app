@@ -5,7 +5,7 @@ const TrackCardDescription = ({
   album,
 }: TrackCardDescriptionProps) => {
   return (
-    <div>
+    <div data-testid="trackCardDescription">
       <p>Artists: {artists.join(",")} </p>
       <p>Album: {album} </p>
     </div>
