@@ -36,7 +36,7 @@ const MusicListPage = () => {
         limit,
         offset
       );
-      return mapTracksToCardData(response);
+      return mapTracksToCardData(response as SpotifySearchByTrackResponse);
     },
     [trackSearchQuery]
   );
