@@ -3,15 +3,14 @@ import useDebounce, { DEFAULT_DELAY } from "../useDebounce";
 
 const value = "Example value";
 const delay = 300;
+const mockSetState = mockUseState("");
 
 describe("useDebounce hook", () => {
-  let mockSetState: jest.Mock;
-  beforeEach(() => {
-    mockSetState = mockUseState("");
+  beforeAll(() => {
     jest.useFakeTimers();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     jest.useRealTimers();
   });
 
