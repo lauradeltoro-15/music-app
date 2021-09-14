@@ -40,7 +40,7 @@ describe("Spotify service", () => {
 
     expect(response).toStrictEqual(successfullJsonResponse);
   });
-  it.only("should throw an error when the response is not valid", async () => {
+  it("should throw an error when the response is not valid", async () => {
     const successfullJsonResponse = { value: true };
     const successResponse = Promise.resolve({
       json: () => successfullJsonResponse,
